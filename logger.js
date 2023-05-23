@@ -1,10 +1,19 @@
+const { EventEmitter } = require("stream");
+
 console.log(__filename);
 console.log(__dirname);
 var url = 'http://vishalkk.com';
-function log(message){
 
-    //send http request
-    console.log(message);
+class Logger extends EventEmitter{
+
+    log(message){
+
+        //send http request
+        console.log(message);
+        //product event
+        this.emit('messageLogged',{id:1,username:"Vishal"});
+    }
 }
 
-module.exports =log;
+
+module.exports =Logger;
